@@ -1,0 +1,24 @@
+syntax = "proto3";
+package grpc;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.jbground.grpc.carrier";
+option java_outer_classname = "CarrierServiceOuterClass";
+
+
+service CarrierService {
+  rpc getCarriers(google.protobuf.Empty) returns (stream Carrier); //전체조회
+  rpc getCarriersByMachineName(Carrier) returns (stream Carrier); //머신네임으로 전체조회
+  rpc getCarrierByName(Carrier) returns (Carrier);          //캐리어이름으로 단일조회
+}
+
+message Carrier {
+  string name = 1;
+  string machineName = 2;
+  string unitName = 3;
+  string type = 4;
+  string kind = 5;
+  string state = 6;
+}

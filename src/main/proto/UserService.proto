@@ -1,0 +1,27 @@
+syntax = "proto3";
+package grpc;
+
+option java_multiple_files = true;
+option java_package = "com.jbground.grpc.user";
+option java_outer_classname = "UserServiceOuterClass";
+
+service UserService {
+  rpc setUser(User) returns (UserIdx);
+  rpc getUser(UserIdx) returns (User);
+  rpc setUsers(stream User) returns (UserIdx);                // Client Streaming RPC
+  rpc getUsers(UserIdx) returns (stream User);                // Server Streaming RPC
+  rpc getUsersRealtime(stream UserIdx) returns (stream User); // Bidirectional Streaming RPC
+
+}
+
+message User {
+  int64 idx = 1;
+  string username = 2;
+  string email = 3;
+  repeated string roles = 4;
+}
+
+message UserIdx {
+//  int64 idx = 1;
+  repeated int64 idx = 1;
+}

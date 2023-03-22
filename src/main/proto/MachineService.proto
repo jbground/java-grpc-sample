@@ -1,0 +1,24 @@
+syntax = "proto3";
+package grpc;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.jbground.grpc.machine";
+option java_outer_classname = "MachineServiceOuterClass";
+
+
+service MachineService {
+  rpc getMachines(google.protobuf.Empty) returns (stream Machine); //전체조회
+  rpc getMachinesByControllerName(Machine) returns (stream Machine); //머신네임으로 전체조회
+  rpc getMachineByName(Machine) returns (Machine);          //캐리어이름으로 단일조회
+}
+
+message Machine {
+  string name = 1;
+  string machinekind = 2;
+  string shopname = 3;
+  string areaname = 4;
+  string carriertype = 5;
+  string controllername = 6;
+}
