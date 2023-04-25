@@ -1,9 +1,6 @@
 package com.jbground;
 
-import com.jbground.dbserver.service.UserServiceImpl;
-import com.jbground.grpc.User;
-import com.jbground.grpc.UserIdx;
-import com.jbground.grpc.UserServiceGrpc;
+import com.jbground.service.UserServiceImpl;
 import io.grpc.*;
 import io.grpc.stub.StreamObserver;
 
